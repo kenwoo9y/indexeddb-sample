@@ -3,7 +3,6 @@ const form = document.getElementById('form');
 const title = document.getElementById('title');
 const evaluation = document.getElementById('evaluation');
 const image = document.getElementById('image');
-const submit = document.getElementById('submit');
 
 // create an instance of a db object for us to store the IndexedDB data in
 let db;
