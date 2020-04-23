@@ -15,7 +15,7 @@ file.addEventListener('change', function() {
             let width = image.width;
             let height = image.height;
             if (file.files[0].size > 1024 * 1024 * 1) {
-                console.log("Greater than 1MB");
+                console.log("Larger than 1MB");
                 if (image.width > image.height) {
                     var ratio = image.height/image.width;
                     width = maxWidth;
