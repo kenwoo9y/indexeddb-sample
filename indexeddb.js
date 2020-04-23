@@ -26,8 +26,8 @@ dbOpenRequest.onupgradeneeded = function(event) {
 
     // define what data items the objectStore will contain
     objectStore.createIndex("title", "title", { unique: false });
-    objectStore.createIndex("evaluation", "evaluation", { unique: false});
-    objectStore.createIndex("image", "image", { unique: false});
+    objectStore.createIndex("evaluation", "evaluation", { unique: false });
+    objectStore.createIndex("image", "image", { unique: false });
 };
 
 // give the form submit button an event listener so that when the form is submitted the addData() function is run
