@@ -14,6 +14,8 @@ file.addEventListener('change', function() {
         image.onload = function() {
             let width = image.width;
             let height = image.height;
+            console.log("before width:"+image.width);
+            console.log("before height:"+image.height);
             if (file.files[0].size > 1024 * 1024 * 1) {
                 console.log("Larger than 1MB");
                 if (image.width > image.height) {
@@ -34,6 +36,8 @@ file.addEventListener('change', function() {
             var ctx = canvas.getContext('2d');
             ctx.clearRect(0,0,width,height);
             ctx.drawImage(image,0,0,image.width,image.height,0,0,width,height);
+            console.log("after width:"+width);
+            console.log("after height:"+height);
 
             var base64 = canvas.toDataURL('image/jpeg');
 
