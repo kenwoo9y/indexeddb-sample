@@ -69,6 +69,8 @@ dbOpenRequest.onerror = function(event) {
 
 dbOpenRequest.onsuccess = function(event) {
     db = dbOpenRequest.result;
+
+    showData();
 };
 
 dbOpenRequest.onupgradeneeded = function(event) {
@@ -81,6 +83,22 @@ dbOpenRequest.onupgradeneeded = function(event) {
     objectStore.createIndex("title", "title", { unique: false });
     objectStore.createIndex("evaluation", "evaluation", { unique: false });
     objectStore.createIndex("image", "image", { unique: false });
+};
+
+function showData() {
+    // open a db transaction
+    let transaction = db.transaction(["ItemDB"]);
+
+    // call an object store that's already been added to the database
+    let objectStore = transaction.objectStore("ItemDB");
+
+    //　get all Item objects from the object store
+    let objectStoreGetAllRequest = objectStore.getAll();
+
+    objectStoreGetAllRequest.onsuccess = function(event) {
+        var items = objectStoreGetAllRequest.result;
+        console.log(items);
+    };
 };
 
 // give the form submit button an event listener so that when the form is submitted the addData() function is run
@@ -104,7 +122,9 @@ function addData(event) {
         alert("Error add data.")
     };
 
-    transaction.oncomplete = function() {};
+    transaction.oncomplete = function() {
+        showData();
+    };
 
     // call an object store that's already been added to the database
     let objectStore = transaction.objectStore("ItemDB");
