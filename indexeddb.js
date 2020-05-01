@@ -3,7 +3,8 @@ const form = document.getElementById('form');
 const title = document.getElementById('title');
 const evaluation = document.getElementById('evaluation');
 const file = document.getElementById('image');
-
+const itemList = document.getElementById('item-list');
+        
 file.addEventListener('change', function() {
     // resize image
     const maxWidth = 500;
@@ -86,6 +87,9 @@ dbOpenRequest.onupgradeneeded = function(event) {
 };
 
 function showData() {
+    // clear the content of the task list
+    itemList.innerHTML = "";
+    
     // open a db transaction
     let transaction = db.transaction(["ItemDB"]);
 
@@ -97,7 +101,28 @@ function showData() {
 
     objectStoreGetAllRequest.onsuccess = function(event) {
         var items = objectStoreGetAllRequest.result;
-        console.log(items);
+        
+        for(i=0; i<items.length; i++) {
+            var tr = document.createElement('tr');
+            for(j=0; j<=i; j++) {
+                var td0 = document.createElement('td');
+                td0.innerHTML = i;
+                itemList.appendChild(td0);
+
+                var td1 = document.createElement('td');
+                td1.innerHTML = items[i].title;
+                itemList.appendChild(td1);
+
+                var td2 = document.createElement('td');
+                td2.innerHTML = items[i].evaluation;
+                itemList.appendChild(td2);
+
+                var td3 = document.createElement('td');
+                td3.innerHTML = items[i].image;
+                itemList.appendChild(td3);
+            }
+            itemList.appendChild(tr);
+        }
     };
 };
 
