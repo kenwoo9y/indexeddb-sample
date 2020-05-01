@@ -118,7 +118,7 @@ function showData() {
                 itemList.appendChild(td2);
 
                 var td3 = document.createElement('td');
-                td3.innerHTML = items[i].image;
+                td3.innerHTML = "<img src ="+items[i].image+">";
                 itemList.appendChild(td3);
             }
             itemList.appendChild(tr);
