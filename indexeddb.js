@@ -104,23 +104,21 @@ function showData() {
         
         for(i=0; i<items.length; i++) {
             var tr = document.createElement('tr');
-            for(j=0; j<=i; j++) {
-                var td0 = document.createElement('td');
-                td0.innerHTML = i;
-                itemList.appendChild(td0);
+            var td0 = document.createElement('td');
+            td0.innerHTML = i;
+            itemList.appendChild(td0);
 
-                var td1 = document.createElement('td');
-                td1.innerHTML = items[i].title;
-                itemList.appendChild(td1);
+            var td1 = document.createElement('td');
+            td1.innerHTML = items[i].title;
+            itemList.appendChild(td1);
 
-                var td2 = document.createElement('td');
-                td2.innerHTML = items[i].evaluation;
-                itemList.appendChild(td2);
+            var td2 = document.createElement('td');
+            td2.innerHTML = items[i].evaluation;
+            itemList.appendChild(td2);
 
-                var td3 = document.createElement('td');
-                td3.innerHTML = "<img src ="+items[i].image+">";
-                itemList.appendChild(td3);
-            }
+            var td3 = document.createElement('td');
+            td3.innerHTML = "<img src ="+items[i].image+">";
+            itemList.appendChild(td3);
             itemList.appendChild(tr);
         }
     };
