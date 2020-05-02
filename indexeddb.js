@@ -104,6 +104,7 @@ function showData() {
         
         for(i=0; i<items.length; i++) {
             var tr = document.createElement('tr');
+
             var td0 = document.createElement('td');
             td0.innerHTML = i;
             itemList.appendChild(td0);
@@ -119,6 +120,17 @@ function showData() {
             var td3 = document.createElement('td');
             td3.innerHTML = "<img src ="+items[i].image+">";
             itemList.appendChild(td3);
+
+            // create a delete button inside each list item, giving it an event handler so that it runs the deleteButton()
+            var deleteButton = document.createElement('button');
+            itemList.appendChild(deleteButton);
+            deleteButton.innerHTML = 'Delete item';
+            // function when clicked
+            deleteButton.setAttribute('delete-item', items[i].item_id);
+            deleteButton.onclick = function(event) {
+                deleteItem(event);
+            };
+
             itemList.appendChild(tr);
         }
     };
@@ -166,12 +178,18 @@ function addData(event) {
 };
 
 function deleteItem(event) {
-    // retrieve the name of the task we want to delete
-    let itemName = event.target.getAttribute('');
+    // retrieve the id of the task we want to delete
+    let deleteItem = event.target.getAttribute('delete-item');
 
     // open a read/write db transaction
     let transaction = db.transaction(["ItemDB"], "readwrite");
 
+    let objectStore = transaction.objectStore("ItemDB");
+    
     // delete the item
-    let objectStore = transaction.objectStore("ItemDB").objectStore.delete(itemName);
+    let objectStoreDeleteRequest = objectStore.delete(+deleteItem);
+
+    objectStoreDeleteRequest.onsuccess = function(event) {
+        showData();
+    };
 };
