@@ -123,12 +123,12 @@ function showData() {
 
             // create a delete button inside each list item, giving it an event handler so that it runs the deleteButton()
             var deleteButton = document.createElement('button');
-            itemList.appendChild(deleteButton);
             deleteButton.innerHTML = 'Delete item';
+            itemList.appendChild(deleteButton);
             // function when clicked
             deleteButton.setAttribute('delete-item', items[i].item_id);
             deleteButton.onclick = function(event) {
-                deleteItem(event);
+                deleteData(event);
             };
 
             itemList.appendChild(tr);
@@ -177,7 +177,7 @@ function addData(event) {
     };
 };
 
-function deleteItem(event) {
+function deleteData(event) {
     // retrieve the id of the task we want to delete
     let deleteItem = event.target.getAttribute('delete-item');
 
