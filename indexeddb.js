@@ -123,7 +123,7 @@ function showData() {
 
             // create a delete button inside each list item, giving it an event handler so that it runs the deleteButton()
             var deleteButton = document.createElement('button');
-            deleteButton.innerHTML = 'Delete item';
+            deleteButton.innerHTML = 'Delete Item';
             itemList.appendChild(deleteButton);
             // function when clicked
             deleteButton.setAttribute('delete-item', items[i].item_id);
