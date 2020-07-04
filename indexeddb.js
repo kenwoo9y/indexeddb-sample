@@ -56,7 +56,7 @@ file.addEventListener('change', function() {
         image.src = event.target.result;
     };
     fileReader.readAsDataURL(file.files[0]);
-});
+})
 
 // create an instance of a db object for us to store the IndexedDB data in
 let db;
@@ -66,13 +66,13 @@ const dbOpenRequest = window.indexedDB.open("ItemDB", 1);
 
 dbOpenRequest.onerror = function(event) {
     alert("Error loading database.");
-};
+}
 
 dbOpenRequest.onsuccess = function(event) {
     db = dbOpenRequest.result;
 
     showData();
-};
+}
 
 dbOpenRequest.onupgradeneeded = function(event) {
     let db = event.target.result;
@@ -84,7 +84,7 @@ dbOpenRequest.onupgradeneeded = function(event) {
     objectStore.createIndex("title", "title", { unique: false });
     objectStore.createIndex("evaluation", "evaluation", { unique: false });
     objectStore.createIndex("image", "image", { unique: false });
-};
+}
 
 function showData() {
     // clear the content of the task list
@@ -134,10 +134,10 @@ function showData() {
             itemList.appendChild(tr);
         }
     };
-};
+}
 
 // give the form submit button an event listener so that when the form is submitted the addData() function is run
-form.addEventListener('submit', addData, false);
+form.addEventListener('submit', addData, false)
 
 function addData(event) {
     event.preventDefault();
@@ -177,7 +177,7 @@ function addData(event) {
         canvas.width = 0;
         canvas.height = 0;
     };
-};
+}
 
 function deleteData(event) {
     // retrieve the id of the task we want to delete
@@ -194,4 +194,4 @@ function deleteData(event) {
     objectStoreDeleteRequest.onsuccess = function(event) {
         showData();
     };
-};
+}
